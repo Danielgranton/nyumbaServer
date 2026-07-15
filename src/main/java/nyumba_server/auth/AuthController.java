@@ -1,9 +1,10 @@
-package nyumba_server.controller;
+package nyumba_server.auth;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import nyumba_server.dto.*;
-import nyumba_server.service.AuthService;
+import nyumba_server.auth.dto.LoginRequest;
+import nyumba_server.auth.dto.RegisterRequest;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

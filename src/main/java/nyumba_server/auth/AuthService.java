@@ -1,11 +1,11 @@
-package nyumba_server.service;
+package nyumba_server.auth;
 
 import lombok.RequiredArgsConstructor;
-import nyumba_server.dto.*;
-import nyumba_server.model.Role;
-import nyumba_server.model.User;
-import nyumba_server.repository.UserRepository;
+import nyumba_server.auth.dto.LoginRequest;
+import nyumba_server.auth.dto.RegisterRequest;
+import nyumba_server.roles.Role;
 import nyumba_server.security.JwtService;
+
 import org.springframework.security.authentication.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

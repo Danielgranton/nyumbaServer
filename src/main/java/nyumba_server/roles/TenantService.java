@@ -1,12 +1,14 @@
-package nyumba_server.service;
+package nyumba_server.roles;
 
 import lombok.RequiredArgsConstructor;
-import nyumba_server.dto.TenantRequest;
-import nyumba_server.dto.TenantResponse;
-import nyumba_server.model.*;
-import nyumba_server.repository.TenantRepository;
-import nyumba_server.repository.UnitRepository;
-import nyumba_server.repository.UserRepository;
+import nyumba_server.auth.User;
+import nyumba_server.auth.UserRepository;
+import nyumba_server.roles.dto.TenantRequest;
+import nyumba_server.roles.dto.TenantResponse;
+import nyumba_server.units.Unit;
+import nyumba_server.units.UnitRepository;
+import nyumba_server.units.UnitStatus;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

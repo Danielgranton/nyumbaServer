@@ -1,11 +1,12 @@
-package nyumba_server.service;
+package nyumba_server.units;
 
 import lombok.RequiredArgsConstructor;
-import nyumba_server.dto.UnitRequest;
-import nyumba_server.dto.UnitResponse;
-import nyumba_server.model.*;
-import nyumba_server.repository.PropertyRepository;
-import nyumba_server.repository.UnitRepository;
+import nyumba_server.auth.User;
+import nyumba_server.property.Property;
+import nyumba_server.property.PropertyRepository;
+import nyumba_server.units.dto.UnitRequest;
+import nyumba_server.units.dto.UnitResponse;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;

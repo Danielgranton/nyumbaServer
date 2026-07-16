@@ -1,11 +1,11 @@
-package nyumba_server.controller;
+package nyumba_server.units;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import nyumba_server.dto.UnitRequest;
-import nyumba_server.dto.UnitResponse;
-import nyumba_server.model.User;
-import nyumba_server.service.UnitService;
+import nyumba_server.units.dto.UnitRequest;
+import nyumba_server.units.dto.UnitResponse;
+import nyumba_server.auth.User;
+import nyumba_server.units.UnitService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

@@ -1,9 +1,11 @@
-package nyumba_server.model;
+package nyumba_server.tenants;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import nyumba_server.auth.User;
+import nyumba_server.units.Unit;
 import java.time.LocalDateTime;
 
 @Entity

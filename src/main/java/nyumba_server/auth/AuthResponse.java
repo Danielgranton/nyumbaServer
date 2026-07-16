@@ -1,6 +1,6 @@
-package nyumba_server.dto;
+package nyumba_server.auth;
 
-import nyumba_server.model.Role;
+import nyumba_server.tenants.Role;
 import lombok.*;
 
 @Getter

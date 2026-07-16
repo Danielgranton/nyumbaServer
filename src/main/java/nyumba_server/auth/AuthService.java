@@ -3,7 +3,7 @@ package nyumba_server.auth;
 import lombok.RequiredArgsConstructor;
 import nyumba_server.auth.dto.LoginRequest;
 import nyumba_server.auth.dto.RegisterRequest;
-import nyumba_server.roles.Role;
+import nyumba_server.tenants.Role;
 import nyumba_server.security.JwtService;
 
 import org.springframework.security.authentication.*;

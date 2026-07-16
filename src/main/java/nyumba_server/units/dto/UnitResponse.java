@@ -1,8 +1,8 @@
-package nyumba_server.dto;
+package nyumba_server.units.dto;
 
 import lombok.*;
-import nyumba_server.model.UnitStatus;
-import nyumba_server.model.UnitType;
+import nyumba_server.units.UnitStatus;
+import nyumba_server.units.UnitType;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

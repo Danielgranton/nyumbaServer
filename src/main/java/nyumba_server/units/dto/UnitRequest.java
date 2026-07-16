@@ -1,9 +1,9 @@
-package nyumba_server.dto;
+package nyumba_server.units.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import nyumba_server.model.UnitType;
+import nyumba_server.units.UnitType;
 
 import java.math.BigDecimal;
 

@@ -1,6 +1,6 @@
-package nyumba_server.repository;
+package nyumba_server.property;
 
-import nyumba_server.model.Property;
+import nyumba_server.property.Property;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

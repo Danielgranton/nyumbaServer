@@ -1,4 +1,4 @@
-package nyumba_server.dto;
+package nyumba_server.property.dto;
 
 import lombok.*;
 

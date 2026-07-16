@@ -1,4 +1,4 @@
-package nyumba_server.model;
+package nyumba_server.units;
 
 public enum UnitStatus {
     VACANT,

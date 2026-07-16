@@ -1,4 +1,4 @@
-package nyumba_server.dto;
+package nyumba_server.property.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

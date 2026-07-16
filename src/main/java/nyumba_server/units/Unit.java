@@ -1,6 +1,10 @@
-package nyumba_server.model;
+package nyumba_server.units;
 
 import java.math.BigDecimal;
+import nyumba_server.property.Property;
+import nyumba_server.units.UnitStatus;
+import nyumba_server.units.UnitType;
+import nyumba_server.tenants.Tenant;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;

@@ -1,7 +1,5 @@
 package nyumba_server.units;
 
-import nyumba_server.units.Unit;
-import nyumba_server.units.UnitStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

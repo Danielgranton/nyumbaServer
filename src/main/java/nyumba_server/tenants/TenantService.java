@@ -8,9 +8,6 @@ import nyumba_server.tenants.dto.TenantResponse;
 import nyumba_server.units.Unit;
 import nyumba_server.units.UnitRepository;
 import nyumba_server.units.UnitStatus;
-import nyumba_server.tenants.Tenant;
-import nyumba_server.tenants.TenantRepository;
-import nyumba_server.tenants.Role;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

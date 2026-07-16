@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import nyumba_server.units.dto.UnitRequest;
 import nyumba_server.units.dto.UnitResponse;
 import nyumba_server.auth.User;
-import nyumba_server.units.UnitService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

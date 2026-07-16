@@ -21,4 +21,7 @@ public class UnitRequest {
 
     @NotNull
     private BigDecimal rentAmount;
+
+    @NotNull
+    private BigDecimal depositAmount;
 }

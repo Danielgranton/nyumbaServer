@@ -1,10 +1,6 @@
 package nyumba_server.units;
 
 import java.math.BigDecimal;
-import nyumba_server.property.Property;
-import nyumba_server.units.UnitStatus;
-import nyumba_server.units.UnitType;
-import nyumba_server.tenants.Tenant;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -25,6 +21,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import nyumba_server.property.Property;
+import nyumba_server.tenants.Tenant;
 
 @Entity
 @Table(name = "units")
@@ -48,6 +46,9 @@ public class Unit {
 
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal rentAmount;
+
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal depositAmount;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

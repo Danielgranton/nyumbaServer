@@ -25,6 +25,7 @@ public class UnitService {
                 .unitNumber(request.getUnitNumber())
                 .unitType(request.getUnitType())
                 .rentAmount(request.getRentAmount())
+                .depositAmount(request.getDepositAmount())
                 .status(UnitStatus.VACANT)
                 .property(property)
                 .build();
@@ -54,6 +55,7 @@ public class UnitService {
         unit.setUnitNumber(request.getUnitNumber());
         unit.setUnitType(request.getUnitType());
         unit.setRentAmount(request.getRentAmount());
+        unit.setDepositAmount(request.getDepositAmount());
         unitRepository.save(unit);
         return toResponse(unit);
     }
@@ -87,6 +89,7 @@ public class UnitService {
                 .unitNumber(unit.getUnitNumber())
                 .unitType(unit.getUnitType())
                 .rentAmount(unit.getRentAmount())
+                .depositAmount(unit.getDepositAmount())
                 .status(unit.getStatus())
                 .propertyId(unit.getProperty().getId())
                 .propertyName(unit.getProperty().getName())

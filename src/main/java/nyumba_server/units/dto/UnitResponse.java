@@ -17,6 +17,7 @@ public class UnitResponse {
     private String unitNumber;
     private UnitType unitType;
     private BigDecimal rentAmount;
+    private BigDecimal depositAmount;
     private UnitStatus status;
     private Long propertyId;
     private String propertyName;

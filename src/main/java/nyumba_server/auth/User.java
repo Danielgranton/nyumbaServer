@@ -41,6 +41,12 @@ public class User implements UserDetails {
     private Role role;
 
     @Column(nullable = false, updatable = false)
+    private String profileImageOriginal;
+    private String profileImageLarge;
+    private String profileImageMedium;
+    private String profileImageSmall;
+    private String profileImageThumbnail;
+
     private LocalDateTime createdAt;
 
     @PrePersist

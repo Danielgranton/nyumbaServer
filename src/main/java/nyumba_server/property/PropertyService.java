@@ -3,10 +3,8 @@ package nyumba_server.property;
 import lombok.RequiredArgsConstructor;
 import nyumba_server.property.dto.PropertyRequest;
 import nyumba_server.property.dto.PropertyResponse;
-import nyumba_server.property.Property;
 import nyumba_server.units.UnitStatus;
 import nyumba_server.auth.User;
-import nyumba_server.property.PropertyRepository;
 import nyumba_server.units.UnitRepository;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package nyumba_server.security;
+package nyumba_server.config;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

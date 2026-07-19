@@ -57,7 +57,7 @@ public class RentPaymentService {
     }
 
     public List<RentPaymentResponse> getAllPayments(User landlord) {
-        return rentPaymentRepository.findAllByLandlordId(landlord.getId())
+        return rentPaymentRepository.findAllByLandlordId(landlord.getId(), org.springframework.data.domain.Pageable.unpaged()).getContent()
                 .stream().map(this::toResponse).toList();
     }
 

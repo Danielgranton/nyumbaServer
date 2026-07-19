@@ -2,9 +2,10 @@ package nyumba_server.auth;
 
 import lombok.RequiredArgsConstructor;
 import nyumba_server.auth.dto.LoginRequest;
+import nyumba_server.auth.dto.RefreshResponse;
 import nyumba_server.auth.dto.RegisterRequest;
+import nyumba_server.config.JwtService;
 import nyumba_server.tenants.Role;
-import nyumba_server.security.JwtService;
 
 import org.springframework.security.authentication.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -40,6 +41,14 @@ public class AuthService {
                 .email(user.getEmail())
                 .fullName(user.getFullName())
                 .role(user.getRole())
+                .build();
+    }
+
+    public RefreshResponse refresh(nyumba_server.auth.User user) {
+        String token = jwtService.generateToken(user);
+        return RefreshResponse.builder()
+                .token(token)
+                .email(user.getEmail())
                 .build();
     }
 

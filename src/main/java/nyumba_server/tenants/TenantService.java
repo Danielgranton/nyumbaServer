@@ -8,7 +8,8 @@ import nyumba_server.tenants.dto.TenantResponse;
 import nyumba_server.units.Unit;
 import nyumba_server.units.UnitRepository;
 import nyumba_server.units.UnitStatus;
-
+import nyumba_server.units.dto.UnitResponse;
+import nyumba_server.units.UnitService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +24,9 @@ public class TenantService {
     private final UnitRepository unitRepository;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final UnitService unitService;
+
+    // ── Landlord operations ─────────────────────────────────────
 
     @Transactional
     public TenantResponse create(TenantRequest request, User landlord) {
@@ -41,7 +45,6 @@ public class TenantService {
             throw new RuntimeException("Unit is already occupied");
         }
 
-        // Create user account for tenant
         User user = User.builder()
                 .fullName(request.getFullName())
                 .email(request.getEmail())
@@ -51,7 +54,6 @@ public class TenantService {
                 .build();
         userRepository.save(user);
 
-        // Create tenant profile
         Tenant tenant = Tenant.builder()
                 .user(user)
                 .unit(unit)
@@ -59,7 +61,6 @@ public class TenantService {
                 .build();
         tenantRepository.save(tenant);
 
-        // Mark unit as occupied
         unit.setStatus(UnitStatus.OCCUPIED);
         unitRepository.save(unit);
 
@@ -69,15 +70,15 @@ public class TenantService {
     public List<TenantResponse> getAllForLandlord(User landlord) {
         return tenantRepository.findAll()
                 .stream()
-                .filter(t -> t.getUnit().getProperty().getLandlord().getId().equals(landlord.getId()))
+                .filter(t -> t.getUnit() != null &&
+                        t.getUnit().getProperty().getLandlord().getId().equals(landlord.getId()))
                 .map(this::toResponse)
                 .toList();
     }
 
     public TenantResponse getById(Long id) {
-        Tenant tenant = tenantRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Tenant not found"));
-        return toResponse(tenant);
+        return toResponse(tenantRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Tenant not found")));
     }
 
     @Transactional
@@ -98,7 +99,26 @@ public class TenantService {
         tenantRepository.save(tenant);
     }
 
-    private TenantResponse toResponse(Tenant tenant) {
+    // ── Tenant portal operations ────────────────────────────────
+
+    public TenantResponse getMyProfile(User user) {
+        Tenant tenant = tenantRepository.findByUserId(user.getId())
+                .orElseThrow(() -> new RuntimeException("Tenant profile not found"));
+        return toResponse(tenant);
+    }
+
+    public UnitResponse getMyUnit(User user) {
+        Tenant tenant = tenantRepository.findByUserId(user.getId())
+                .orElseThrow(() -> new RuntimeException("Tenant profile not found"));
+
+        if (tenant.getUnit() == null) {
+            throw new RuntimeException("You are not assigned to any unit");
+        }
+
+        return unitService.toResponse(tenant.getUnit());
+    }
+
+    public TenantResponse toResponse(Tenant tenant) {
         return TenantResponse.builder()
                 .id(tenant.getId())
                 .fullName(tenant.getUser().getFullName())

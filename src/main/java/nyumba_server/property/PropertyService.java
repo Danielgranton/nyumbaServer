@@ -3,6 +3,7 @@ package nyumba_server.property;
 import lombok.RequiredArgsConstructor;
 import nyumba_server.property.dto.PropertyRequest;
 import nyumba_server.property.dto.PropertyResponse;
+import nyumba_server.property.dto.OccupancyResponse;
 import nyumba_server.units.UnitStatus;
 import nyumba_server.auth.User;
 import nyumba_server.units.UnitRepository;
@@ -53,6 +54,25 @@ public class PropertyService {
     public void delete(Long id, User landlord) {
         Property property = findAndVerifyOwner(id, landlord);
         propertyRepository.delete(property);
+    }
+
+    public OccupancyResponse getOccupancy(Long propertyId, User landlord) {
+        Property property = findAndVerifyOwner(propertyId, landlord);
+        long occupied = unitRepository.countByPropertyIdAndStatus(property.getId(), nyumba_server.units.UnitStatus.OCCUPIED);
+        long vacant   = unitRepository.countByPropertyIdAndStatus(property.getId(), nyumba_server.units.UnitStatus.VACANT);
+        long booked   = unitRepository.countByPropertyIdAndStatus(property.getId(), nyumba_server.units.UnitStatus.BOOKED);
+        long total    = occupied + vacant + booked;
+        double pct    = total > 0 ? (occupied * 100.0) / total : 0.0;
+        return OccupancyResponse.builder()
+                .propertyId(property.getId())
+                .propertyName(property.getName())
+                .address(property.getAddress())
+                .totalUnits(total)
+                .occupiedUnits(occupied)
+                .vacantUnits(vacant)
+                .bookedUnits(booked)
+                .occupancyPercentage(Math.round(pct * 100.0) / 100.0)
+                .build();
     }
 
     private Property findAndVerifyOwner(Long id, User landlord) {

@@ -1,5 +1,5 @@
 
-package nyumba_server.security;
+package nyumba_server.config;
 
 import lombok.RequiredArgsConstructor;
 import nyumba_server.auth.UserRepository;

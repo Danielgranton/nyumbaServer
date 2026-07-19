@@ -91,7 +91,7 @@ public class MonthlyBillService {
     }
 
     public List<MonthlyBillResponse> getAllBills(User landlord) {
-        return monthlyBillRepository.findAllByLandlordId(landlord.getId())
+        return monthlyBillRepository.findAllByLandlordId(landlord.getId(), org.springframework.data.domain.Pageable.unpaged()).getContent()
                 .stream().map(this::toResponse).toList();
     }
 
